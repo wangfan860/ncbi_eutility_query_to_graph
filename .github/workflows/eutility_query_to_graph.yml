@@ -17,7 +17,7 @@ jobs:
     - name: Fetch newest 
       uses: githubocto/flat@v2
     - name: Fetch data
-      uses: actions/eutility-docker-action@v1
+      uses: actions/ncbi_eutility_query_to_graph@v2
       with:
         queryfile: ace2_related_3d_gene_structure.sh
         downloaded_filename: newest_structure.json
