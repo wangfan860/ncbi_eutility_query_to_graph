@@ -16,3 +16,16 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   entrypoint: 'ace2_related_3d_gene_structure.sh'
+
+jobs:
+  scheduled:
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v2
+    - name: Fetch newest 
+      uses: githubocto/flat@v2
+    - name: Fetch data
+      uses: githubocto/flat@v3
+      with:
+        queryfile: ace2_related_3d_gene_structure.sh
+        downloaded_filename: newest_structure.json
