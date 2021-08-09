@@ -18,6 +18,4 @@ jobs:
       uses: githubocto/flat@v2
     - name: Fetch data
       uses: ./    # Uses an action in the root directory
-      with:
-        queryfile: ace2_related_3d_gene_structure.sh
-        downloaded_filename: newest_structure.json
+      run: bash ace2_related_3d_gene_structure.sh
