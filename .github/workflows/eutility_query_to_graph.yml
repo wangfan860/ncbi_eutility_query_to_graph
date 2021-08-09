@@ -1,0 +1,10 @@
+name: NCBI Data Ingest
+
+author: Fan Wang
+
+description: 'Query the data from NCBI API using the custom bash script'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: 'ace2_related_3d_gene_structure.sh'
