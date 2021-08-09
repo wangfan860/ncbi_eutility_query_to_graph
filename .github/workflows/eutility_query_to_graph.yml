@@ -4,6 +4,14 @@ author: Fan Wang
 
 description: 'Query the data from NCBI API using the custom bash script'
 
+on:
+  push:
+    paths:
+      - .github/workflows/eutility_query_to_graph.yml
+  workflow_dispatch:
+  schedule:
+    - cron: '*/360 * * * *'
+    
 runs:
   using: 'docker'
   image: 'Dockerfile'
