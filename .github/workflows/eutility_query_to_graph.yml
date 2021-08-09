@@ -1,9 +1,5 @@
 name: NCBI Data Ingest
 
-author: Fan Wang
-
-description: 'Query the data from NCBI API using the custom bash script'
-
 on:
   push:
     paths:
