@@ -7,21 +7,17 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '*/360 * * * *'
-    
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  entrypoint: 'ace2_related_3d_gene_structure.sh'
 
 jobs:
   scheduled:
+    runs-on: ubuntu-latest
     steps:
     - name: Check out repo
       uses: actions/checkout@v2
     - name: Fetch newest 
       uses: githubocto/flat@v2
     - name: Fetch data
-      uses: githubocto/flat@v3
+      uses: actions/ncbi_eutility_query_to_graph@v1
       with:
         queryfile: ace2_related_3d_gene_structure.sh
         downloaded_filename: newest_structure.json
