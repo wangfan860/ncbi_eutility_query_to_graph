@@ -14,8 +14,7 @@ jobs:
     steps:
     - name: Check out repo
       uses: actions/checkout@v2
-    - name: Fetch newest 
-      uses: githubocto/flat@v2
     - name: Use local my-action
       uses: ./    # Uses an action in the root directory
-      #run: bash ace2_related_3d_gene_structure.sh
+    - name: Run bash
+      run: bash ./ace2_related_3d_gene_structure.sh
