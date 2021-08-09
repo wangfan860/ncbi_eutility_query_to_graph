@@ -2,6 +2,8 @@ FROM biocontainers/biocontainers:vdebian-buster-backports_cv1
 
 MAINTAINER biocontainers <biodocker@gmail.com>
 
+COPY ace2_related_3d_gene_structure.sh /ace2_related_3d_gene_structure.sh
+
 LABEL    software="ncbi-entrez-direct" \ 
     base_image="biocontainers/biocontainers:vdebian-buster-backports_cv1" \ 
     container="ncbi-entrez-direct" \ 
