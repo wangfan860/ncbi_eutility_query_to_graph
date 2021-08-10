@@ -5,4 +5,4 @@ author: Fan Wang
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  entrypoint: 'ace2_related_3d_gene_structure.sh'
+  #entrypoint: 'ace2_related_3d_gene_structure.sh'
