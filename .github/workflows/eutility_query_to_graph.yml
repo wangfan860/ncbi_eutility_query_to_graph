@@ -19,4 +19,5 @@ jobs:
     # - name: Run bash
     #   run: bash ./ace2_related_3d_gene_structure.sh
     - name: test
-      run: /usr/bin/esearch --help
+      run: |
+        ls -la
