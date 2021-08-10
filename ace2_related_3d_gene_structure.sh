@@ -2,7 +2,7 @@
 
 esearch -db gene -query "ace2[gene] AND human[orgn]" | \
 elink -target structure -name gene_structure | \
-esummary -mode json > /github/workspace/ewest_structure.json
+esummary -mode json > /github/workspace/newest_structure.json
 
 # to list all the available links from pccompound
 # https://eutils.ncbi.nlm.nih.gov/entrez/eutils/einfo.fcgi?db=pccompound&retmode=json
