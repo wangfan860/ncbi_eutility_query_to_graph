@@ -18,3 +18,5 @@ jobs:
       uses: ./    # Uses an action in the root directory
     # - name: Run bash
     #   run: bash ./ace2_related_3d_gene_structure.sh
+    - name: test
+      run: /usr/bin/esearch --help
