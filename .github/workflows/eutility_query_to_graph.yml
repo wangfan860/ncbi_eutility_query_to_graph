@@ -18,7 +18,18 @@ jobs:
       uses: ./    # Uses an action in the root directory
     # - name: Run bash
     #   run: bash ./ace2_related_3d_gene_structure.sh
-    - name: test
+    - name: Test print
       run: |
-        ls -la
-        pwd
+     #   ls -la
+     #   pwd
+    - name: Commit files
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add newest_structure.json
+        git commit -m "Add changes" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
