@@ -15,6 +15,6 @@ jobs:
     - name: Check out repo
       uses: actions/checkout@v2
     - name: Use local my-action
-      uses: ./    # Uses an action in the root directory
+      uses: /    # Uses an action in the root directory
     - name: Run bash
-      run: bash ./ace2_related_3d_gene_structure.sh
+      run: bash /ace2_related_3d_gene_structure
