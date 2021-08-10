@@ -21,11 +21,13 @@ USER root
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && (apt-get install -t buster-backports -y ncbi-entrez-direct || apt-get install -y ncbi-entrez-direct) && apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/*
-RUN ln -s /usr/bin/esearch /esearch  && \
-    ln -s /usr/bin/elink /elink && \
-    ln -s /usr/bin/esummary /esummary
-COPY ace2_related_3d_gene_structure.sh /ace2_related_3d_gene_structure.sh
-RUN chmod +x /ace2_related_3d_gene_structure.sh
-ENV PATH="/:${PATH}"
-
-ENTRYPOINT ["/ace2_related_3d_gene_structure.sh"]
+# # RUN ln -s /usr/bin/esearch /esearch  && \
+# #     ln -s /usr/bin/elink /elink && \
+# #     ln -s /usr/bin/esummary /esummary
+# # COPY ace2_related_3d_gene_structure.sh /ace2_related_3d_gene_structure.sh
+# # RUN chmod +x /ace2_related_3d_gene_structure.sh
+# # ENV PATH="/:${PATH}"
+# ENV PATH="/usr/bin:${PATH}"
+# # ENTRYPOINT ["/ace2_related_3d_gene_structure.sh"]
+# CMD ["esearch ", "-db ", "gene ", "-query ", "\"ace2[gene] AND human[orgn]\"", "|", "elink ", "-target ", "structure ", "-name ", "gene_structure ", "|", "esummary ", "-mode ", "json "]
+ENTRYPOINT ["/bin/bash"]
