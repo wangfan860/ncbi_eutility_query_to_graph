@@ -24,23 +24,14 @@ jobs:
     #   run: |
     #     ls -la
     #     pwd
-    
-    - name: Setup MSBuild path
-      uses: microsoft/setup-msbuild@v1.0.0
-      env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-  
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
-      env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
 
     - name: check for changes
       run: |
         if git diff --exit-code; then
-          echo "::set-env name=changes_exist::true"
+          echo "changes_exist=true" >> $GITHUB_ENV
         else
-          echo "::set-env name=changes_exist::false"
+          echo "changes_exist=false" >> $GITHUB_ENV
         fi
 
     - name: Commit files
