@@ -14,20 +14,18 @@ jobs:
     steps:
     - name: Check out repo
       uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
 
     - name: Use local my-action
       uses: ./    # Uses an action in the root directory
 
-    - name: check for changes
-      run: |
-        if git diff --exit-code; then
-          echo "changes_exist=true" >> $GITHUB_ENV
-        else
-          echo "changes_exist=false" >> $GITHUB_ENV
-        fi
+    - name: Check if there are changes
+      id: changes
+      uses: UnicornGlobal/has-changes-action@v1.0.11
 
     - name: Commit files
-      if: ${{ GITHUB_ENV.changes_exist == 'true' }}
+      if: steps.changes.outputs.changed == 1
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
@@ -35,6 +33,7 @@ jobs:
         git commit -m "Add changes" -a
         
     - name: Push changes
+      if: steps.changes.outputs.changed == 1
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
