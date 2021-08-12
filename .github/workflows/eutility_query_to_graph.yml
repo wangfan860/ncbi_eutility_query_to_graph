@@ -18,13 +18,6 @@ jobs:
     - name: Use local my-action
       uses: ./    # Uses an action in the root directory
 
-    # - name: Run bash
-    #   run: bash ./ace2_related_3d_gene_structure.sh
-    # - name: Test print
-    #   run: |
-    #     ls -la
-    #     pwd
-
     - name: check for changes
       run: |
         if git diff --exit-code; then
