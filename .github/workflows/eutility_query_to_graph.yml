@@ -6,7 +6,7 @@ on:
       - .github/workflows/eutility_query_to_graph.yml
   workflow_dispatch:
   schedule:
-    - cron: '*/360 * * * *'
+    - cron: '* 9 * * *'
 
 jobs:
   scheduled:
@@ -14,20 +14,26 @@ jobs:
     steps:
     - name: Check out repo
       uses: actions/checkout@v2
+
     - name: Use local my-action
       uses: ./    # Uses an action in the root directory
-  # - name: Run bash
-  #   run: bash ./ace2_related_3d_gene_structure.sh
-  # - name: Test print
-  #   run: |
-  #      ls -la
-  #      pwd
+
+    - name: check for changes
+      run: |
+        if git diff --exit-code; then
+          echo "::set-env name=changes_exist::true"
+        else
+          echo "::set-env name=changes_exist::false"
+        fi
+
     - name: Commit files
+      if: ${{ env.changes_exist == 'true' }}
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add newest_structure.json
         git commit -m "Add changes" -a
+        
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
